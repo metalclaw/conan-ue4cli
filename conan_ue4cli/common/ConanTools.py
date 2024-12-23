@@ -1,4 +1,5 @@
 from conan import tools
+from conan.tools.files import save, load
 import inspect
 
 
@@ -30,7 +31,7 @@ class ConanTools(object):
 		Wraps `conan.tools.files.load()`
 		'''
 		ConanTools._configureConan()
-		return tools.files.load(self, path=*args, encoding=**kwargs)
+		return tools.files.load(self, *args, **kwargs)
 	
 	@staticmethod
 	def save(*args, **kwargs):
