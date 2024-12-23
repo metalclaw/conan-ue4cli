@@ -25,7 +25,7 @@ class ConanTools(object):
 		return tools.get(*args, **kwargs)
 	
 	@staticmethod
-	def load(*args, **kwargs):
+	def load(self, *args, **kwargs):
 		'''
 		Wraps `conan.tools.files.load()`
 		'''
