@@ -1,4 +1,4 @@
-from conans import ConanFile, tools
+from conan import ConanFile, tools
 import json, os
 
 # This will be replaced by a package-specific class with the
