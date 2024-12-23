@@ -1,4 +1,4 @@
-from conans import tools
+from conan import tools
 import inspect
 
 
