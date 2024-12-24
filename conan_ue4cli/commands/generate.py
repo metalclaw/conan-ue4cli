@@ -89,7 +89,10 @@ def generate(manager, argv):
 		# If we are only removing the existing Conan profile, stop processing here
 		if args.remove_only == True:
 			return
-		
+
+		# Use the short form of the UE4 version string (e.g 4.19) as the channel for our installed packages
+		channel = manager.getEngineVersion('short')
+
 		# Under Linux, locate clang and ensure the Conan profile uses it for autodetection
 		clang, clangxx, _ = (None, None, None)
 		profileEnv = copy.deepcopy(os.environ)
@@ -97,16 +100,14 @@ def generate(manager, argv):
 			clang, clangxx, _ = _locateClang(manager)
 			profileEnv['CC'] = clang
 			profileEnv['CXX'] = clangxx
-		
+		profileEnv['UNREAL_ENGINE_VERSION'] = channel
+
 		# Create the ue4 Conan profile
 		print('Creating "{}" Conan profile using autodetected settings...'.format(profile))
 		Utility.run(['conan', 'profile', 'detect', '--name', profile], env=profileEnv)
-		
-		# Use the short form of the UE4 version string (e.g 4.19) as the channel for our installed packages
-		channel = manager.getEngineVersion('short')
-		
+
 		# Embed the Unreal Engine version string in the ue4 Conan profile so it can be retrieved later if needed
-		Utility.run(['conan', 'profile', 'show', '-c="env.unreal_engine_version={}"'.format(channel), '--profile:all={}'.format(profile)])
+		# Utility.run(['conan', 'profile', 'show', '-c="UNREAL_ENGINE_VERSION={}"'.format(channel), '--profile:all={}'.format(profile)])
 		
 		print('Installing profile base packages...')
 		PackageManagement.install(join(packagesDir, 'ue4lib'), 'profile', profile)

@@ -14,7 +14,7 @@ class ${MODULE}Conan(ConanFile):
         Call this with a package reference that uses a placeholder for the channel, e.g.:
         self._requireUnreal("my-package/1.0.0@adamrehn/{}")
         '''
-        self.requires(dependency.format(os.environ["unreal_engine_version"]))
+        self.requires(dependency.format(os.environ["UNREAL_ENGINE_VERSION"]))
     
     def requirements(self):
         
