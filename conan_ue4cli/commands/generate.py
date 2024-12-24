@@ -66,10 +66,8 @@ def generate(manager, argv):
 	packagesDir = join(dataDir, 'packages')
 	templateDir = join(dataDir, 'wrapper_template')
 	delegatesDir = join(dataDir, 'delegates')
-	
+	print('stevan ' + templateDir, file=sys.stderr)
 	# Read the contents of the template conanfile for generated packages
-	print('stevan')
-	print(templateDir)
 	template = ConanTools.load(join(templateDir, 'conanfile.py'))
 	
 	# Create the delegate class manager
