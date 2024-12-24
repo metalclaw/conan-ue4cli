@@ -26,12 +26,12 @@ class ConanTools(object):
 		return tools.get(*args, **kwargs)
 	
 	@staticmethod
-	def load(path):
+	def load(*args, **kwargs):
 		'''
 		Wraps `conan.tools.files.load()`
 		'''
 		ConanTools._configureConan()
-		return tools.files.load(path)
+		return tools.files.load(*args, **kwargs)
 	
 	@staticmethod
 	def save(*args, **kwargs):
