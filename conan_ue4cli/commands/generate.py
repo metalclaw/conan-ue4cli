@@ -100,7 +100,7 @@ def generate(manager, argv):
 		
 		# Create the ue4 Conan profile
 		print('Creating "{}" Conan profile using autodetected settings...'.format(profile))
-		Utility.run(['conan', 'profile', 'new', profile, '--detect'], env=profileEnv)
+		Utility.run(['conan', 'profile', 'detect', '--name', profile], env=profileEnv)
 		
 		# Use the short form of the UE4 version string (e.g 4.19) as the channel for our installed packages
 		channel = manager.getEngineVersion('short')
