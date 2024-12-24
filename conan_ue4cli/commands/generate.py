@@ -153,7 +153,7 @@ def generate(manager, argv):
 		libs = [lib for lib in manager.listThirdPartyLibs() if lib != 'libc++']
 		
 		print('Removing any previous versions of generated wrapper packages for {}...'.format(channel))
-		Utility.run(['conan', 'remove', '--force', '*/ue4@adamrehn/{}'.format(channel)], check=False)
+		Utility.run(['conan', 'remove', '--confirm', '*/ue4@adamrehn/{}'.format(channel)], check=False)
 		
 		# Under Linux, generate the wrapper package for the bundled clang toolchain and bundled libc++
 		if platform.system() == 'Linux':
