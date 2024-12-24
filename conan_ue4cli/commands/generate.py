@@ -40,7 +40,7 @@ def _locateClang(manager, architecture='x86_64'):
 	# If we reached this point then we could not locate the appropriate clang binary
 	raise Exception('could not locate clang. Please ensure you have run Setup.sh to install the bundled toolchain.')
 
-def generate(manager, argv):
+def generate(self, manager, argv):
 	
 	# Our supported command-line arguments
 	parser = argparse.ArgumentParser(
