@@ -40,7 +40,7 @@ def _locateClang(manager, architecture='x86_64'):
 	# If we reached this point then we could not locate the appropriate clang binary
 	raise Exception('could not locate clang. Please ensure you have run Setup.sh to install the bundled toolchain.')
 
-def generate(self, manager, argv):
+def generate(manager, argv):
 	
 	# Our supported command-line arguments
 	parser = argparse.ArgumentParser(
@@ -68,7 +68,7 @@ def generate(self, manager, argv):
 	delegatesDir = join(dataDir, 'delegates')
 
 	# Read the contents of the template conanfile for generated packages
-	template = ConanTools.load(self, join(templateDir, 'conanfile.py'))
+	template = ConanTools.load(join(templateDir, 'conanfile.py'))
 	
 	# Create the delegate class manager
 	delegates = DelegateManager(delegatesDir)
