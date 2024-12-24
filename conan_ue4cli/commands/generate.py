@@ -106,7 +106,7 @@ def generate(manager, argv):
 		channel = manager.getEngineVersion('short')
 		
 		# Embed the Unreal Engine version string in the ue4 Conan profile so it can be retrieved later if needed
-		Utility.run(['conan', 'profile', 'show', '-s="env.UNREAL_ENGINE_VERSION={}"'.format(channel), profile])
+		Utility.run(['conan', 'profile', 'show', '-s="env.UNREAL_ENGINE_VERSION={}"'.format(channel), '-pr', profile])
 		
 		print('Installing profile base packages...')
 		PackageManagement.install(join(packagesDir, 'ue4lib'), 'profile', profile)
@@ -117,7 +117,7 @@ def generate(manager, argv):
 		if platform.system() == 'Linux':
 			
 			# Update the ue4 Conan profile to ensure libc++ is specified as the C++ standard library
-			Utility.run(['conan', 'profile', 'show', '-s="settings.compiler.libcxx=libc++"', profile])
+			Utility.run(['conan', 'profile', 'show', '-s="settings.compiler.libcxx=libc++"', '-pr', profile])
 			
 			# Update the ue4 Conan profile to add the toolchain wrapper package as a build requirement for all packages
 			profilePath = ProfileManagement.conanProfileFile(profile)
