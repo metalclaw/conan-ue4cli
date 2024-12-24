@@ -86,7 +86,7 @@ class ProfileManagement(object):
 		'''
 		Retrieves the Unreal Engine version string for the specified Conan profile
 		'''
-		return ProfileManagement._profileValue(profile, 'env.UNREAL_ENGINE_VERSION')
+		return ProfileManagement._profileValue(profile, 'env.unreal_engine_version')
 	
 	@staticmethod
 	def profilePlatform(profile):

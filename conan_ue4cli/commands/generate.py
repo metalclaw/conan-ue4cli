@@ -106,7 +106,7 @@ def generate(manager, argv):
 		channel = manager.getEngineVersion('short')
 		
 		# Embed the Unreal Engine version string in the ue4 Conan profile so it can be retrieved later if needed
-		Utility.run(['conan', 'profile', 'show', '-c="env.UNREAL_ENGINE_VERSION={}"'.format(channel), '--profile:all={}'.format(profile)])
+		Utility.run(['conan', 'profile', 'show', '-c="env.unreal_engine_version={}"'.format(channel), '--profile:all={}'.format(profile)])
 		
 		print('Installing profile base packages...')
 		PackageManagement.install(join(packagesDir, 'ue4lib'), 'profile', profile)
