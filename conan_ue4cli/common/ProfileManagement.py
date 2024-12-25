@@ -14,7 +14,7 @@ class ProfileManagement(object):
 		'''
 		Returns the path to the Conan profiles directory
 		'''
-		return join('~/.conan', 'profiles')
+		return join('~/.conan2', 'profiles')
 	
 	@staticmethod
 	def conanProfileFile(profile):
