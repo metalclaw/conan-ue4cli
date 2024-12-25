@@ -39,7 +39,7 @@ class ConanTools(object):
 		Wraps `conan.tools.save()`
 		'''
 		ConanTools._configureConan()
-		return tools.save(*args, **kwargs)
+		return tools.files.save(object, *args, **kwargs)
 	
 	@staticmethod
 	def _configureConan():
