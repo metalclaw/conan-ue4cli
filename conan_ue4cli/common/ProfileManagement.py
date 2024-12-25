@@ -1,6 +1,7 @@
 import conan, os, re, shutil
 from os.path import exists, join
 from .Utility import Utility
+from conan import ConanFile
 
 class ProfileManagement(object):
 	'''
@@ -14,7 +15,7 @@ class ProfileManagement(object):
 		'''
 		Returns the path to the Conan profiles directory
 		'''
-		return join(object.env_info.CONAN_HOME, 'profiles')
+		return join(ConanFile.env_info.CONAN_HOME, 'profiles')
 	
 	@staticmethod
 	def conanProfileFile(profile):
