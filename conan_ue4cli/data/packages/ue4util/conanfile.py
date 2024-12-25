@@ -1,4 +1,5 @@
 from conan import ConanFile
+from conan.tools.files import copy
 
 class UE4UtilConan(ConanFile):
     name = "ue4util"
@@ -12,7 +13,7 @@ class UE4UtilConan(ConanFile):
     build_policy = "missing"
     
     def package(self):
-        self.copy("*.py")
+        copy(self, "*.py", self.source_folder, self.package_folder)
     
     def package_info(self):
         self.env_info.PYTHONPATH.append(self.package_folder)

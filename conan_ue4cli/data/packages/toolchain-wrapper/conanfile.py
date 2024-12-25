@@ -1,6 +1,7 @@
 from conan import ConanFile
 import glob, os, tempfile
 from os.path import dirname, join
+from conan.tools.files import copy
 
 class ToolchainWrapper(ConanFile):
     name = "toolchain-wrapper"
@@ -70,19 +71,19 @@ class ToolchainWrapper(ConanFile):
         
         # Copy the toolchain files into our package
         print('Copying toolchain files from "{}"...'.format(toolchain))
-        self.copy("*", src=toolchain)
+        copy(self, "*", toolchain, self.package_folder)
         
         # Copy the libc++ header files into our package
         headers = join(libcxx, 'include')
         print('Copying libc++ header files from "{}"...'.format(headers))
-        self.copy("*", dst="libc++/include", src=headers)
+        copy(self, "*", headers, join(self.package_folder, "libc++/include"))
         
         # Copy the libc++ library files into our package
         print('Copying libc++ library files from "{}"...'.format(libraries))
-        self.copy("*", dst="libc++/lib", src=libraries)
+        copy(self, "*", libraries, join(self.package_folder, "libc++/lib"))
         
         # Copy our compiler wrapper scripts into the package
-        self.copy("*")
+        copy(self, "*", self.source_folder, self.package_folder)
     
     def package_info(self):
         

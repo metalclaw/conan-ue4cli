@@ -1,5 +1,6 @@
 from conan import ConanFile, tools
 import json, os
+from conan.tools.files import copy
 
 # This will be replaced by a package-specific class with the
 # name `PackageDelegate` that provides any package-specific logic
@@ -37,12 +38,12 @@ class ${LIBNAME}Conan(ConanFile):
             # Filter out any instances where the module has specified the root of
             # the ThirdParty modules tree as an include directory (yes, seriously.)
             if os.path.basename(includedir) != 'ThirdParty':
-                self.copy("*.h", "include", src=includedir)
-                self.copy("*.hpp", "include", src=includedir)
-                self.copy("*.inc", "include", src=includedir)
-                self.copy("*.c", "include", src=includedir)
-                self.copy("*.cc", "include", src=includedir)
-                self.copy("*.cpp", "include", src=includedir)
+                copy(self, "*.h", includedir, join(self.package_folder, "include"))
+                copy(self, "*.hpp", includedir, join(self.package_folder, "include"))
+                copy(self, "*.inc", includedir, join(self.package_folder, "include"))
+                copy(self, "*.c", includedir, join(self.package_folder, "include"))
+                copy(self, "*.cc", includedir, join(self.package_folder, "include"))
+                copy(self, "*.cpp", includedir, join(self.package_folder, "include"))
         
         # Copy any static library files into our package, ignoring shared libraries
         # and gathering a list of any system libraries that need to be linked against
@@ -58,7 +59,7 @@ class ${LIBNAME}Conan(ConanFile):
                 
                 # Verify that the library file exists prior to attempting to copy it
                 if os.path.exists(lib) == True and os.path.isfile(lib) == True:
-                    self.copy(os.path.basename(lib), "lib", src=os.path.dirname(lib))
+                    copy(self, os.path.basename(lib), os.path.dirname(lib), join(self.package_folder, "lib"))
         
         # Serialise our defines and compiler flags so they can be retrieved later
         flags = {

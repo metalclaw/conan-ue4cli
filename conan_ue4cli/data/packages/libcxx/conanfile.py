@@ -1,4 +1,5 @@
 from conan import ConanFile, tools
+from conan.tools.files import copy
 
 class LibCxxConan(ConanFile):
     name = "libcxx"
@@ -12,7 +13,7 @@ class LibCxxConan(ConanFile):
     build_policy = "missing"
     
     def package(self):
-        self.copy("*.py")
+        copy(self, "*.py", self.source_folder, self.package_folder)
     
     def package_info(self):
         
