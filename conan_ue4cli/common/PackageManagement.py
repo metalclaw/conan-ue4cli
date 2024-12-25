@@ -13,7 +13,7 @@ class PackageManagement(object):
 		'''
 		Installs a Conan package
 		'''
-		return Utility.run(['conan', 'create', '.', 'adamrehn/' + channel, '--profile=' + profile] + args, cwd=packageDir)
+		return Utility.run(['conan', 'create', '.', '-b', 'adamrehn/' + channel, '--profile=' + profile] + args, cwd=packageDir)
 	
 	@staticmethod
 	def generateWrapper(libName, template, delegates, packageDir, channel, profile):
