@@ -150,9 +150,6 @@ def generate(manager, argv):
 			]), file=sys.stderr)
 			sys.exit(1)
 
-		print('yoyo')
-		print(manager.listThirdPartyLibs())
-
 		print('Retrieving thirdparty library list from UBT...')
 		libs = [lib for lib in manager.listThirdPartyLibs() if lib != 'libc++']
 
