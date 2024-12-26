@@ -38,7 +38,6 @@ class Utility(object):
 		'''
 		Executes the supplied command and captures the output
 		'''
-		print("stevan command: " + command)
 		return subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, **kwargs)
 	
 	@staticmethod

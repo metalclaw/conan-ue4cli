@@ -152,7 +152,9 @@ def generate(manager, argv):
 		
 		print('Retrieving thirdparty library list from UBT...')
 		libs = [lib for lib in manager.listThirdPartyLibs() if lib != 'libc++']
-		
+		print('stevan')
+		print(libs)
+
 		print('Removing any previous versions of generated wrapper packages for {}...'.format(channel))
 		Utility.run(['conan', 'remove', '--confirm', '*/ue4@adamrehn/{}'.format(channel)], check=False)
 		
