@@ -169,7 +169,7 @@ def generate(manager, argv):
 			print('  Wrapping lib++: {}'.format(libcxx))
 			os.environ['WRAPPED_TOOLCHAIN'] = dirname(dirname(clang))
 			os.environ['WRAPPED_LIBCXX'] = dirname(dirname(dirname(dirname(dirname(libcxx)))))
-			PackageManagement.install(join(packagesDir, 'toolchain-wrapper'), channel, profile)
+			PackageManagement.install(join(packagesDir, 'toolchain-wrapper'), channel, profile, ['--build', 'missing'])
 
 		# Generate the package for each UE4-bundled thirdparty library
 		for lib in libs:
