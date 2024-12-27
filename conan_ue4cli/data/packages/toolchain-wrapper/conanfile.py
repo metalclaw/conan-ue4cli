@@ -8,7 +8,7 @@ class ToolchainWrapper(ConanFile):
     version = "ue4"
     author = "Adam Rehn (adam@adamrehn.com)"
     description = "Wraps a clang compiler toolchain, libc++ and a minimal CentOS 7 sysroot"
-    url = "https://github.com/adamrehn/conan-ue4cli/tree/master/conan_ue4cli/packages/toolchain-wrapper"
+    url = "https://github.com/adamrehn/conan-ue4cli/tree/master/conan_ue4cli/data/packages/toolchain-wrapper"
     homepage = "https://llvm.org/"
     license = "Apache-2.0"
     settings = "os", "compiler", "arch"
