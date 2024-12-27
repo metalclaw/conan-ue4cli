@@ -97,5 +97,5 @@ class ToolchainWrapper(ConanFile):
         self.env_info.LDFLAGS = "---link"
         
         # Ensure our compiler wrapper scripts are executable
-        self.run("find / -type f -name \"clang++.py\"".format(self.package_folder))
+        self.run("ls -la /home/ue4/.conan2/p/toolcb0cae8781ee34/e/wrappers/".format(self.package_folder))
         self.run("chmod +x {}/wrappers/clang.py {}/wrappers/clang++.py".format(self.package_folder, self.package_folder))
