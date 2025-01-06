@@ -84,7 +84,7 @@ class ToolchainWrapper(ConanFile):
         
         # Copy our compiler wrapper scripts into the package
         self.run("echo stevan")
-        self.run("ls -la /home/ue4/.conan2/p/".format(self.source_folder))
+        self.run("ls -la {}".format(self.source_folder))
         copy(self, "*", self.source_folder, self.package_folder)
     
     def package_info(self):
