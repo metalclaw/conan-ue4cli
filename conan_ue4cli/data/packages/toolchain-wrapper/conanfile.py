@@ -83,6 +83,8 @@ class ToolchainWrapper(ConanFile):
         copy(self, "*", libraries, join(self.package_folder, "libc++/lib"))
         
         # Copy our compiler wrapper scripts into the package
+        self.run("echo stevan")
+        self.run("ls -la /home/ue4/.conan2/p/".format(self.source_folder))
         copy(self, "*", self.source_folder, self.package_folder)
     
     def package_info(self):
@@ -97,5 +99,4 @@ class ToolchainWrapper(ConanFile):
         self.env_info.LDFLAGS = "---link"
         
         # Ensure our compiler wrapper scripts are executable
-        self.run("ls -la /home/ue4/.conan2/p/".format(self.package_folder))
         self.run("chmod +x {}/wrappers/clang.py {}/wrappers/clang++.py".format(self.package_folder, self.package_folder))
