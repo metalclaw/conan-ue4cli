@@ -71,6 +71,8 @@ class ToolchainWrapper(ConanFile):
         
         # Copy the toolchain files into our package
         print('Copying toolchain files from "{}"...'.format(toolchain))
+        self.run("echo stevan toolchain")
+        self.run("ls -la {}".format(toolchain))
         copy(self, "*", toolchain, self.package_folder)
         
         # Copy the libc++ header files into our package
@@ -83,8 +85,7 @@ class ToolchainWrapper(ConanFile):
         copy(self, "*", libraries, join(self.package_folder, "libc++/lib"))
         
         # Copy our compiler wrapper scripts into the package
-        self.run("echo stevan")
-        self.run("ls -la {}".format(self.source_folder))
+
         copy(self, "*", self.source_folder, self.package_folder)
     
     def package_info(self):
