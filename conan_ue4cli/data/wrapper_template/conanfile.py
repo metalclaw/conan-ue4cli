@@ -16,7 +16,7 @@ class ${LIBNAME}Conan(ConanFile):
     url = "https://github.com/adamrehn/conan-ue4cli/tree/master/conan_ue4cli/data/wrapper_template"
     
     settings = "os", "compiler", "build_type", "arch"
-    # requires = ("ue4lib/ue4@adamrehn/profile")
+    requires = ("ue4lib/ue4@adamrehn/profile")
     
     def requirements(self):
         
