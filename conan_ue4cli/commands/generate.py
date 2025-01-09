@@ -79,6 +79,9 @@ def generate(manager, argv):
 		# Generate a profile with an appropriate target suffix for the current Engine version and host platform
 		# (This naming scheme will become more useful in future when we support cross-compilation rather than always targeting the host platform)
 		profile = ProfileManagement.profileForHostPlatform(manager)
+
+		print('Listing existing profiles')
+		print(ProfileManagement.listGeneratedProfiles())
 		
 		# Remove the UE4 Conan profile if it exists, along with any profile-wide packages
 		print('Removing the "{}" Conan profile if it already exists...'.format(profile))
@@ -105,6 +108,10 @@ def generate(manager, argv):
 		# Create the ue4 Conan profile
 		print('Creating "{}" Conan profile using autodetected settings...'.format(profile))
 		Utility.run(['conan', 'profile', 'detect', '--name', profile], env=profileEnv)
+
+
+		print('Listing existing profiles')
+		print(ProfileManagement.listGeneratedProfiles())
 
 		# Embed the Unreal Engine version string in the ue4 Conan profile so it can be retrieved later if needed
 		# Utility.run(['conan', 'profile', 'show', '-c="UNREAL_ENGINE_VERSION={}"'.format(channel), '--profile:all={}'.format(profile)])
