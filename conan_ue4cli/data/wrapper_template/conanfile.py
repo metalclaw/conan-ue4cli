@@ -1,7 +1,6 @@
 from conan import ConanFile, tools
 import json, os
 from conan.tools.files import copy
-from ue4lib import UE4Lib
 
 # This will be replaced by a package-specific class with the
 # name `PackageDelegate` that provides any package-specific logic
@@ -17,7 +16,7 @@ class ${LIBNAME}Conan(ConanFile):
     url = "https://github.com/adamrehn/conan-ue4cli/tree/master/conan_ue4cli/data/wrapper_template"
     
     settings = "os", "compiler", "build_type", "arch"
-    # requires = ("ue4lib/ue4@adamrehn/profile")
+    requires = ("ue4lib/ue4@adamrehn/profile")
     
     def requirements(self):
         
@@ -30,6 +29,7 @@ class ${LIBNAME}Conan(ConanFile):
     def package(self):
         
         # Retrieve the details for the wrapped library from ue4cli
+        from ue4lib import UE4Lib
         details = UE4Lib("${LIBNAME}")
         
         # Copy the header files (and any stray source files) into our package
