@@ -23,7 +23,7 @@ class PackageManagement(object):
 		conanfile = template.replace('${LIBNAME}', libName)
 		conanfile = conanfile.replace('${DELEGATE_CLASS}', delegates.getDelegateClass(libName))
 		ConanTools.save(join(packageDir, 'conanfile.py'), conanfile)
-		PackageManagement.install(packageDir, channel, profile, ['--build', 'missing'])
+		PackageManagement.install(packageDir, channel, profile)
 	
 	@staticmethod
 	def getBuildJson(conanfile, profile):
