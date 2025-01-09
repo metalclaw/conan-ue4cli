@@ -1,6 +1,7 @@
 from conan import ConanFile, tools
 import json, os
 from conan.tools.files import copy
+from ue4lib import UE4Lib
 
 # This will be replaced by a package-specific class with the
 # name `PackageDelegate` that provides any package-specific logic
@@ -29,7 +30,6 @@ class ${LIBNAME}Conan(ConanFile):
     def package(self):
         
         # Retrieve the details for the wrapped library from ue4cli
-        from ue4lib import UE4Lib
         details = UE4Lib("${LIBNAME}")
         
         # Copy the header files (and any stray source files) into our package
