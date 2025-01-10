@@ -22,9 +22,9 @@ class ${LIBNAME}Conan(ConanFile):
     def generate(self):
         ms = VirtualBuildEnv(self)
         ms.generate()
+        print(ms.environment().vars())
     
     def requirements(self):
-        
         # Perform any package-specific requirements logic
         PackageDelegate.post_requirements(self)
     
