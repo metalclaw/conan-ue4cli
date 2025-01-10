@@ -22,7 +22,9 @@ class UE4LibConan(ConanFile):
         copy(self, "*.py", self.source_folder, self.package_folder)
     
     def package_info(self):
-        self.conf_info.define("user.pythonpath", self.package_folder)
+        self.conf_info.append_path("user.env.pythonpath:dir", self.package_folder)
+        self.runenv_info.append_path("PYTHONPATH", self.package_folder)
+        self.buildenv_info.append_path("PYTHONPATH", self.package_folder)
         self.runenv.append_path("PYTHONPATH", self.package_folder)
         self.buildenv.append_path("PYTHONPATH", self.package_folder)
 
