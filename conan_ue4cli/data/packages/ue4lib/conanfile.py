@@ -1,6 +1,6 @@
 from conan import ConanFile
-from conan.tools.files import copy
-import os
+from conan.tools.files import copy as conancopy
+import os, copy
 
 class UE4LibConan(ConanFile):
     name = "ue4lib"
@@ -20,8 +20,10 @@ class UE4LibConan(ConanFile):
     build_policy = "missing"
     
     def package(self):
-        copy(self, "*.py", self.source_folder, self.package_folder)
+        conancopy(self, "*.py", self.source_folder, self.package_folder)
     
     def package_info(self):
-        self.runenv_info.append_path("PYTHONPATH", self.package_folder)
-        print("Python path: " + self.runenv_info.vars(self).get('PYTHONPATH'))
+        profileEnv = copy.deepcopy(os.environ)
+        profileEnv['PYTHONPATH'].append(self.package_folder)
+        # self.runenv_info.append_path("PYTHONPATH", self.package_folder)
+        # print("Python path: " + self.runenv_info.vars(self).get('PYTHONPATH'))
