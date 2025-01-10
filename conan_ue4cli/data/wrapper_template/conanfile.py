@@ -17,6 +17,10 @@ class ${LIBNAME}Conan(ConanFile):
     
     settings = "os", "compiler", "build_type", "arch"
     requires = ("ue4lib/ue4@adamrehn/profile")
+
+    def generate(self):
+        ms = VirtualBuildEnv(self)
+        ms.generate()
     
     def requirements(self):
         
@@ -27,8 +31,7 @@ class ${LIBNAME}Conan(ConanFile):
         return os.path.join(self.package_folder, "flags.json")
     
     def package(self):
-        print(self.runenv_info.vars(self))
-        print(self.buildenv_info.vars(self))
+        print(self.environment().vars())
         # Retrieve the details for the wrapped library from ue4cli
         from ue4lib import UE4Lib
         details = UE4Lib("${LIBNAME}")
