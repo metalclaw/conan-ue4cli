@@ -107,7 +107,7 @@ def generate(manager, argv):
 		print('Creating "{}" Conan profile using autodetected settings...'.format(profile))
 		Utility.run(['conan', 'profile', 'detect', '--name', profile], env=profileEnv)
 		print('Showing conan profile')
-		Utility.run(['conan', 'profile', 'show', '-pr', profile])
+		Utility.run(['conan', 'profile', 'show', '--profile:build=' + profile])
 
 		# Embed the Unreal Engine version string in the ue4 Conan profile so it can be retrieved later if needed
 		# Utility.run(['conan', 'profile', 'show', '-c="UNREAL_ENGINE_VERSION={}"'.format(channel), '--profile:all={}'.format(profile)])
