@@ -175,5 +175,5 @@ def generate(manager, argv):
 		# Generate the package for each UE4-bundled thirdparty library
 		for lib in libs:
 			print('Generating and installing wrapper package for {}...'.format(lib.lower()))
-			PackageManagement.generateWrapper(lib.lower(), template, delegates, tempDir, channel, profile,['env', 'conanbuild'])
+			PackageManagement.generateWrapper(lib.lower(), template, delegates, tempDir, channel, profile)
 		print('Done.')
