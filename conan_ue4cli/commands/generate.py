@@ -2,6 +2,7 @@ from ..common import ConanTools, DelegateManager, PackageManagement, ProfileMana
 import argparse, copy, glob, os, platform, re, sys, tempfile
 from os.path import abspath, dirname, exists, join
 from pkg_resources import parse_version
+import pprint
 
 def _getClangVersion(clangPath):
 	'''
@@ -101,7 +102,8 @@ def generate(manager, argv):
 			profileEnv['CC'] = clang
 			profileEnv['CXX'] = clangxx
 		profileEnv['UNREAL_ENGINE_VERSION'] = channel
-
+		print('profile env: ')
+		pprint(profileEnv)
 		# Create the ue4 Conan profile
 		print('Creating "{}" Conan profile using autodetected settings...'.format(profile))
 		Utility.run(['conan', 'profile', 'detect', '--name', profile], env=profileEnv)
