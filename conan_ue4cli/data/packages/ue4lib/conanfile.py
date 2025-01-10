@@ -24,3 +24,4 @@ class UE4LibConan(ConanFile):
     
     def package_info(self):
         self.runenv_info.append_path("PYTHONPATH", self.package_folder)
+        print("Python path: " + self.runenv_info['PYTHONPATH'])
