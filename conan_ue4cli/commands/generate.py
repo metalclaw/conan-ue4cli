@@ -103,7 +103,7 @@ def generate(manager, argv):
 			profileEnv['CXX'] = clangxx
 		profileEnv['UNREAL_ENGINE_VERSION'] = channel
 		print('profile env: ')
-		pprint(profileEnv.items())
+		pprint.pp(profileEnv)
 		# Create the ue4 Conan profile
 		print('Creating "{}" Conan profile using autodetected settings...'.format(profile))
 		Utility.run(['conan', 'profile', 'detect', '--name', profile], env=profileEnv)
