@@ -18,11 +18,6 @@ class ${LIBNAME}Conan(ConanFile):
     
     settings = "os", "compiler", "build_type", "arch"
     requires = ("ue4lib/ue4@adamrehn/profile")
-
-    def generate(self):
-        ms = VirtualBuildEnv(self)
-        ms.generate()
-        print(ms.environment().vars(self).items())
     
     def requirements(self):
         # Perform any package-specific requirements logic
