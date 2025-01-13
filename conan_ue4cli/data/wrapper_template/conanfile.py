@@ -30,7 +30,7 @@ class ${LIBNAME}Conan(ConanFile):
         # Retrieve the details for the wrapped library from ue4cli
 
         print('PP: ')
-        print(environ.get('PYTHONPATH'))
+        print(environ.get('PATH'))
 
         from ue4lib import UE4Lib
         details = UE4Lib("${LIBNAME}")
