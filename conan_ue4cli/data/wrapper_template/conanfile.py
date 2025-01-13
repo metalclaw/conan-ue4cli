@@ -81,14 +81,14 @@ class ${LIBNAME}Conan(ConanFile):
     def package_info(self):
         
         # Retrieve our serialised defines and compiler flags
-        flags = json.loads(tools.load(self.flags_filename()))
+        flags = json.loads(tools.files.load(self, self.flags_filename()))
         self.cpp_info.defines = flags["defines"]
         self.cpp_info.cppflags = flags["cppflags"]
         self.cpp_info.sharedlinkflags = flags["sharedlinkflags"]
         self.cpp_info.exelinkflags = flags["exelinkflags"]
         
         # Export our static libraries and system libraries
-        self.cpp_info.libs = tools.collect_libs(self)
+        self.cpp_info.libs = tools.files.collect_libs(self)
         self.cpp_info.system_libs = flags['systemlibs']
         
         # Perform any package-specific post-info logic
