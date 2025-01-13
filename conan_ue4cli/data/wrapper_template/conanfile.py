@@ -73,7 +73,7 @@ class ${LIBNAME}Conan(ConanFile):
             "exelinkflags":    details.ldflags(),
             "systemlibs":      systemLibs
         }
-        tools.files.save(self.flags_filename(), json.dumps(flags))
+        tools.files.save(self, self.flags_filename(), json.dumps(flags))
         
         # Perform any package-specific post-build logic
         PackageDelegate.post_build(self)
