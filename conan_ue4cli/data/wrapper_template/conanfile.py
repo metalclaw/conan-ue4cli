@@ -29,7 +29,7 @@ class ${LIBNAME}Conan(ConanFile):
     def package(self):
         # Retrieve the details for the wrapped library from ue4cli
         print('vars')
-        envvars = self.buildenv_info.vars(self)
+        envvars = Environment().vars(self)
         print(envvars.get('path'))
         print(envvars.get('PATH'))
 
