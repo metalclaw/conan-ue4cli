@@ -1,6 +1,6 @@
 from conan import ConanFile
 from conan.tools.files import copy
-import sys
+import sys, os
 
 class UE4LibConan(ConanFile):
     name = "ue4lib"
@@ -33,6 +33,7 @@ class UE4LibConan(ConanFile):
         self.buildenv.prepend_path("PATH", self.package_folder)
         self.run("export PYTHONPATH=" + self.package_folder)
         sys.path.append(self.package_folder)
+        os.environ['PATH'] += self.package_folder
         # env1 = Environment()
         # envvars = env1.vars(self, scope=None)
         # envvars.save_script("my_env_file")

@@ -1,8 +1,6 @@
 from conan import ConanFile, tools
 import json, os
 from conan.tools.files import copy
-from os import environ
-from conan.tools.env import Environment
 
 # This will be replaced by a package-specific class with the
 # name `PackageDelegate` that provides any package-specific logic
@@ -30,9 +28,7 @@ class ${LIBNAME}Conan(ConanFile):
     def package(self):
         # Retrieve the details for the wrapped library from ue4cli
         print('vars')
-        envvars = Environment().vars(self)
-        print(envvars.get('path'))
-        print(envvars.get('PATH'))
+        print(os.environ['PATH'])
 
         from ue4lib import UE4Lib
         details = UE4Lib("${LIBNAME}")
