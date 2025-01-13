@@ -21,7 +21,7 @@ class UE4LibConan(ConanFile):
     
     def package(self):
         copy(self, "*.py", self.build_folder, self.package_folder)
-        print(os.listdir(self.build_folder))
+        print(os.listdir(self.source_folder))
         raise Exception("the hell?")
 
     def package_info(self):
