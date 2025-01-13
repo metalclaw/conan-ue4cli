@@ -20,9 +20,6 @@ class UE4LibConan(ConanFile):
     build_policy = "missing"
     
     def package(self):
-        print(self.build_folder)
-        print(os.listdir(self.build_folder))
-        raise Exception('test')
         copy(self, "*.py", self.build_folder, self.package_folder)
         copy(self, "*.py", self.source_folder, self.package_folder)
 
@@ -39,3 +36,6 @@ class UE4LibConan(ConanFile):
         sys.path.append(self.package_folder)
         os.environ['PATH'] += ':' + self.package_folder
         os.environ['PYTHONPATH'] = self.package_folder
+        print(self.package_folder)
+        print(os.listdir(self.package_folder))
+        raise Exception('test')
