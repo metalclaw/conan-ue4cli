@@ -34,4 +34,4 @@ class UE4LibConan(ConanFile):
         self.run("export PYTHONPATH=" + self.package_folder)
         sys.path.append(self.package_folder)
         os.environ['PATH'] += ':' + self.package_folder
-        os.environ['PYTHONPATH'] += self.package_folder
+        os.environ['PYTHONPATH'] = self.package_folder
