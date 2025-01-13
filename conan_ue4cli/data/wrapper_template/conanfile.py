@@ -1,7 +1,7 @@
 from conan import ConanFile, tools
 import json, os
 from conan.tools.files import copy
-from conan.tools.env.virtualbuildenv import VirtualBuildEnv
+from os import environ
 
 # This will be replaced by a package-specific class with the
 # name `PackageDelegate` that provides any package-specific logic
@@ -29,7 +29,8 @@ class ${LIBNAME}Conan(ConanFile):
     def package(self):
         # Retrieve the details for the wrapped library from ue4cli
 
-
+        print('PP: ')
+        print(environ.get('PYTHONPATH'))
 
         from ue4lib import UE4Lib
         details = UE4Lib("${LIBNAME}")
