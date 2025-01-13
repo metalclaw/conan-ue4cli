@@ -28,6 +28,7 @@ class ${LIBNAME}Conan(ConanFile):
     
     def package(self):
         # Retrieve the details for the wrapped library from ue4cli
+
         from ue4lib import UE4Lib
         details = UE4Lib("${LIBNAME}")
         
