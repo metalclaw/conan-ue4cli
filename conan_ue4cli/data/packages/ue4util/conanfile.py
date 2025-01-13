@@ -13,7 +13,15 @@ class UE4UtilConan(ConanFile):
     build_policy = "missing"
     
     def package(self):
+        copy(self, "*.py", self.build_folder, self.package_folder)
         copy(self, "*.py", self.source_folder, self.package_folder)
-    
+        copy(self, "*.py", self.recipe_folder, self.package_folder)
+
     def package_info(self):
-        self.env_info.PYTHONPATH.append(self.package_folder)
+        os.environ['PATH'] += ':' + self.package_folder
+        if os.getenv("PYTHONPATH") is not None:
+            os.environ['PYTHONPATH'] += self.package_folder
+        else:
+            os.environ['PYTHONPATH'] = self.package_folder
+
+

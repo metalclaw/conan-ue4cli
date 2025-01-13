@@ -89,13 +89,14 @@ class ToolchainWrapper(ConanFile):
     def package_info(self):
         
         # Set the relevant environment variables to ensure downstream build systems use our compiler wrapper scripts
-        self.env_info.CC = join(self.package_folder, "wrappers", "clang.py")
-        self.env_info.CXX = join(self.package_folder, "wrappers", "clang++.py")
-        self.env_info.WRAPPED_CC = join(self.package_folder, "bin", "clang")
-        self.env_info.WRAPPED_CXX = join(self.package_folder, "bin", "clang++")
-        self.env_info.WRAPPED_LIBCXX = join(self.package_folder, "libc++")
-        self.env_info.WRAPPED_SYSROOT = self.package_folder
-        self.env_info.LDFLAGS = "---link"
+
+        os.environ['CC'] = join(self.package_folder, "wrappers", "clang.py")
+        os.environ['CXX'] = join(self.package_folder, "wrappers", "clang++.py")
+        os.environ['WRAPPED_CC'] = join(self.package_folder, "bin", "clang")
+        os.environ['WRAPPED_CXX'] = join(self.package_folder, "bin", "clang++")
+        os.environ['WRAPPED_LIBCXX'] = join(self.package_folder, "libc++")
+        os.environ['WRAPPED_SYSROOT'] = self.package_folder
+        os.environ['LDFLAGS'] = "---link"
         
         # Ensure our compiler wrapper scripts are executable
         self.run("chmod +x {}/wrappers/clang.py {}/wrappers/clang++.py".format(self.package_folder, self.package_folder))

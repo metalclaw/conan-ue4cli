@@ -25,18 +25,8 @@ class UE4LibConan(ConanFile):
         copy(self, "*.py", self.recipe_folder, self.package_folder)
 
     def package_info(self):
-        self.runenv_info.prepend_path("PYTHONPATH", self.package_folder)
-        self.runenv_info.prepend_path("PATH", self.package_folder)
-        self.buildenv_info.prepend_path("PYTHONPATH", self.package_folder)
-        self.buildenv_info.prepend_path("PATH", self.package_folder)
-        self.runenv.prepend_path("PYTHONPATH", self.package_folder)
-        self.runenv.prepend_path("PATH", self.package_folder)
-        self.buildenv.prepend_path("PYTHONPATH", self.package_folder)
-        self.buildenv.prepend_path("PATH", self.package_folder)
-        self.run("export PYTHONPATH=" + self.package_folder)
-        sys.path.append(self.package_folder)
         os.environ['PATH'] += ':' + self.package_folder
-        os.environ['PYTHONPATH'] = self.package_folder
-        # print(self.package_folder)
-        # print(os.listdir(self.package_folder))
-        # raise Exception('test')
+        if os.getenv("PYTHONPATH") is not None:
+            os.environ['PYTHONPATH'] += self.package_folder
+        else:
+            os.environ['PYTHONPATH'] = self.package_folder
