@@ -1,6 +1,7 @@
 from conan import ConanFile, tools
 import json, os
 from conan.tools.files import copy
+from os.path import join
 
 # This will be replaced by a package-specific class with the
 # name `PackageDelegate` that provides any package-specific logic
