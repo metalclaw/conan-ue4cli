@@ -30,7 +30,5 @@ class UE4LibConan(ConanFile):
         self.runenv.prepend_path("PYTHONPATH", self.package_folder)
         self.buildenv.prepend_path("PYTHONPATH", self.package_folder)
         self.run("export PYTHONPATH=" + self.package_folder)
-        self.buildenv.PYTHONPATH.append(self.package_folder)
-        self.runenv.PYTHONPATH.append(self.package_folder)
         self.buildenv_info.PYTHONPATH.append(self.package_folder)
         self.runenv_info.PYTHONPATH.append(self.package_folder)
