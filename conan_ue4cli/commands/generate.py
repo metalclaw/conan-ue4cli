@@ -118,7 +118,7 @@ def generate(manager, argv):
 		# Apply our Linux-specific profile modifications
 		if platform.system() == 'Linux':
 			# Update the ue4 Conan profile to ensure libc++ is specified as the C++ standard library
-			Utility.run(['conan', 'profile', 'detect', '-s=compiler.libcxx=libc++', '--profile:all={}'.format(profile)])
+			Utility.run(['conan', 'profile', 'show', '-s=compiler.libcxx=libc++', '--profile:all={}'.format(profile)])
 
 			# Update the ue4 Conan profile to add the toolchain wrapper package as a build requirement for all packages
 			profilePath = ProfileManagement.conanProfileFile(profile)

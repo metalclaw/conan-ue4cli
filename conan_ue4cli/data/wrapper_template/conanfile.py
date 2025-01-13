@@ -28,9 +28,11 @@ class ${LIBNAME}Conan(ConanFile):
     
     def package(self):
         # Retrieve the details for the wrapped library from ue4cli
-
-        print('PP: ')
-        print(environ.get('PATH'))
+        print('vars')
+        envvars = self.buildenv_info.vars(self)
+        for name, value in envvars.items():
+            print('name={}'.format(name))
+            print('value={}'.format(value))
 
         from ue4lib import UE4Lib
         details = UE4Lib("${LIBNAME}")
