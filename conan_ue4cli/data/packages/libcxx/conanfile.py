@@ -16,6 +16,5 @@ class LibCxxConan(ConanFile):
         copy(self, "*.py", self.source_folder, self.package_folder)
     
     def package_info(self):
-        
         # Provide the libcxx Python module for backwards compatibility with recipes written for older versions of conan-ue4cli
         self.env_info.PYTHONPATH.append(self.package_folder)
