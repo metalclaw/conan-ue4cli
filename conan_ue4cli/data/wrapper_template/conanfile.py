@@ -31,7 +31,7 @@ class ${LIBNAME}Conan(ConanFile):
         print(os.environ['PATH'])
         print(os.environ['PYTHONPATH'])
 
-        print(os.listdir())
+        print(os.listdir(os.environ['PYTHONPATH']))
 
         from ue4lib import UE4Lib
         details = UE4Lib("${LIBNAME}")
