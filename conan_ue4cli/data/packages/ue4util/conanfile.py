@@ -1,5 +1,6 @@
 from conan import ConanFile
 from conan.tools.files import copy
+import os
 
 class UE4UtilConan(ConanFile):
     name = "ue4util"
