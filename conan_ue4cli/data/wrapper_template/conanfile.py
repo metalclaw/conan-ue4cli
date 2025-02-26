@@ -27,6 +27,8 @@ class ${LIBNAME}Conan(ConanFile):
         return os.path.join(self.package_folder, "flags.json")
     
     def package(self):
+        print('stevan debugging:')
+        print(os.environ['PYTHONPATH'])
         # Retrieve the details for the wrapped library from ue4cli
         from ue4lib import UE4Lib
         details = UE4Lib("${LIBNAME}")
