@@ -1,5 +1,5 @@
 from conan import ConanFile, tools
-import json, os
+import json, os, sys
 from conan.tools.files import copy
 from os.path import join
 
@@ -27,9 +27,8 @@ class ${LIBNAME}Conan(ConanFile):
         return os.path.join(self.package_folder, "flags.json")
     
     def package(self):
-        print('stevan debugging:')
-        print(os.environ['PATH'])
         # Retrieve the details for the wrapped library from ue4cli
+        sys.path.append(os.environ['PYTHONPATH'])
         from ue4lib import UE4Lib
         details = UE4Lib("${LIBNAME}")
         
