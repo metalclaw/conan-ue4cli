@@ -37,9 +37,9 @@ class ToolchainWrapper(ConanFile):
         Attempts to locate the libc++ static library for the specified architecture under the supplied root directory
         '''
         libraries = glob.glob(join(root, "lib", "*", "*{}*".format(architecture), "libc++.a"))
-#         if len(libraries) > 0:
-#             return libraries[0]
-#
+        if len(libraries) > 0:
+            return libraries[0]
+
 #         libraries = glob.glob(join(root, "lib", "Unix", "*{}*".format(architecture), "libc++.a"))
 #         if len(libraries) > 0:
 #             return libraries[0]
