@@ -36,7 +36,7 @@ class ToolchainWrapper(ConanFile):
         '''
         Attempts to locate the libc++ static library for the specified architecture under the supplied root directory
         '''
-        raise RuntimeError('{}'.format(os.path.isdir(root)))
+        raise RuntimeError('folder: {} does folder exist: {}'.format(root, os.path.isdir(root)))
         libraries = glob.glob(join(root, "LibCxx","lib", "Linux", "*{}*".format(architecture), "libc++.a"))
         if len(libraries) > 0:
             return libraries[0]
