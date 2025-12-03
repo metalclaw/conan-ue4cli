@@ -44,7 +44,7 @@ class ToolchainWrapper(ConanFile):
 #         if len(libraries) > 0:
 #             return libraries[0]
 
-        raise RuntimeError('Failed to locate libc++.a for architecture "{}" inside directory "{}"!'.format(architecture, root))
+        raise RuntimeError('Failed to locate libc++.a for architecture "{}" inside directory "{}"!'.format(architecture, libraries))
     
     def package(self):
         
@@ -71,7 +71,7 @@ class ToolchainWrapper(ConanFile):
         toolchain = dirname(dirname(self._find_clang(toolchain, architecture)))
         
         # Locate the libc++ library files for the target architecture
-        libraries = dirname(self._find_libcxx(libcxx.removesuffix("Unix"), architecture))
+        libraries = dirname(self._find_libcxx(libcxx.removesuffix("/Unix"), architecture))
         
         # Copy the toolchain files into our package
         print('Copying toolchain files from "{}"...'.format(toolchain))
