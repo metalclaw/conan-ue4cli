@@ -36,7 +36,8 @@ class ToolchainWrapper(ConanFile):
         '''
         Attempts to locate the libc++ static library for the specified architecture under the supplied root directory
         '''
-        raise RuntimeError('folder: {} does folder exist: {}'.format(root, os.path.isdir(root)))
+        folder = "/home/ue4/UnrealEngine/Engine/Source/ThirdParty"
+        raise RuntimeError('folder: {} does folder exist: {}'.format(folder, os.path.isdir(folder)))
         libraries = glob.glob(join(root, "LibCxx","lib", "Linux", "*{}*".format(architecture), "libc++.a"))
         if len(libraries) > 0:
             return libraries[0]
