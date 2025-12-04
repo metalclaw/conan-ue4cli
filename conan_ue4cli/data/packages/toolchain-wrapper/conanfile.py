@@ -78,7 +78,7 @@ class ToolchainWrapper(ConanFile):
         toolchain = dirname(dirname(self._find_clang(toolchain, architecture)))
         
         # Locate the libc++ library files for the target architecture
-        libraries = dirname(self._find_libcxx(libcxx, architecture))
+        libraries = dirname(self._find_libcxx(toolchain, architecture))
         
         # Copy the toolchain files into our package
         print('Copying toolchain files from "{}"...'.format(toolchain))
