@@ -39,6 +39,9 @@ class ToolchainWrapper(ConanFile):
         libraries = glob.glob(join(root, "LibCxx", "lib", "Unix", "*{}*".format(architecture), "libc++.a"))
         if len(libraries) > 0:
             return libraries[0]
+        libraries = glob.glob(join(root, "LibCxx", "lib", "Linux", "*{}*".format(architecture), "libc++.a"))
+        if len(libraries) > 0:
+            return libraries[0]
         else:
             raise RuntimeError('Failed to locate libc++.a for architecture "{}" inside directory "{}"!'.format(architecture, root))
     
