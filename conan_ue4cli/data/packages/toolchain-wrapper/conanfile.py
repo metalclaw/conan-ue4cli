@@ -36,7 +36,10 @@ class ToolchainWrapper(ConanFile):
         '''
         Attempts to locate the libc++ static library for the specified architecture under the supplied root directory
         '''
-        folder = os.environ.get("LINUX_MULTIARCH_ROOT", None)
+        print("Env variables:")
+        for name, value in os.environ.items():
+            print(f"{name}: {value}")
+        folder = "/home/ue4/"
         raise RuntimeError('folder: {} does folder exist: {} folder contents: {}'.format(folder, os.path.isdir(folder), os.listdir(folder)))
         libraries = glob.glob(join(root, "LibCxx","lib", "Linux", "*{}*".format(architecture), "libc++.a"))
         if len(libraries) > 0:
