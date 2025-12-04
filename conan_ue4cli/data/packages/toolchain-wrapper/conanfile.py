@@ -40,8 +40,8 @@ class ToolchainWrapper(ConanFile):
 #         folder =
 #         raise RuntimeError('folder: {} does folder exist: {} folder contents: {}'.format(folder, os.path.isdir(folder), os.listdir(folder)))
         libraries = glob.glob(join(root, "libc++.a"))
-            if len(libraries) > 0:
-                return libraries[0]
+        if len(libraries) > 0:
+            return libraries[0]
 
         libraries = glob.glob(join(root, "LibCxx","lib", "Linux", "*{}*".format(architecture), "libc++.a"))
         if len(libraries) > 0:
