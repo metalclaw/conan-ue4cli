@@ -36,18 +36,16 @@ class ToolchainWrapper(ConanFile):
         '''
         Attempts to locate the libc++ static library for the specified architecture under the supplied root directory
         '''
-
-#         folder =
-#         raise RuntimeError('folder: {} does folder exist: {} folder contents: {}'.format(folder, os.path.isdir(folder), os.listdir(folder)))
-        libraries = glob.glob(join(root, "lib64", "libc++.a"))
-        if len(libraries) > 0:
-            return libraries[0]
-
         libraries = glob.glob(join(root, "LibCxx","lib", "Linux", "*{}*".format(architecture), "libc++.a"))
         if len(libraries) > 0:
             return libraries[0]
 
         libraries = glob.glob(join(root, "lib", "Unix", "*{}*".format(architecture), "libc++.a"))
+        if len(libraries) > 0:
+            return libraries[0]
+
+        # If not found check whether it's packed in toolchain
+        libraries = glob.glob(join(os.environ.get("WRAPPED_TOOLCHAIN", None), "lib64", "libc++.a"))
         if len(libraries) > 0:
             return libraries[0]
 
@@ -78,7 +76,7 @@ class ToolchainWrapper(ConanFile):
         toolchain = dirname(dirname(self._find_clang(toolchain, architecture)))
         
         # Locate the libc++ library files for the target architecture
-        libraries = dirname(self._find_libcxx(toolchain, architecture))
+        libraries = dirname(self._find_libcxx(libcxx, architecture))
         
         # Copy the toolchain files into our package
         print('Copying toolchain files from "{}"...'.format(toolchain))
